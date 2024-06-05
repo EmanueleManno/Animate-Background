@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Titolo-->
+    <title>Animation Background</title>
+    <!--Collegamento con il file CSS-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--Contenitore-->
+    <div class="container">
+      <!--Scritta in centro-->
+      <h2><span>EMANUELE MANNO</span><br />Developer</h2>
+    </div>
+
+    <!--Collegamento con il fils JS-->
+    <script src="anime.min.js"></script>
+    <!--Scripts-->
+    <script>
+      const container = document.querySelector(".container");
+      for (var i = 0; i <= 100; i++) {
+        const blocks = document.createElement("div");
+        blocks.classList.add("block");
+        container.appendChild(blocks);
+      }
+
+      //Funzione di animazione blocchi
+      function animateBlocks() {
+        anime({
+          targets: ".block",
+          translateX: function () {
+            return anime.random(-700, 700);
+          },
+          translateY: function () {
+            return anime.random(-500, 500);
+          },
+          scale: function () {
+            return anime.random(1, 5);
+          },
+
+          easing: "linear",
+          duration: 3000,
+          delay: anime.stagger(10),
+          complete: animateBlocks,
+        });
+      }
+
+      //Richiamo la funzione
+      animateBlocks();
+    </script>
+  </body>
+</html>
